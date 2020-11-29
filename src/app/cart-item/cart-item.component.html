@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="cart-items">
+        <h2>Shopping Cart</h2>
+        <div class="cart-item" *ngFor="let item of cartListItem">
+             <img [src]="item.src" />
+             <div class="cart-details">
+                 <div class="item-detail-wrapper">
+                    <div class="price-description">
+                        <p class="name">{{item.name}}</p>
+                        <p class="price">{{item.price | currency : 'INR'}}</p>    
+                     </div>
+                     <div class="trash">
+                        <i class="fa fa-trash" (click)="deleteItemFromCart(item)" aria-hidden="true"></i>
+                     </div>    
+                 </div>
+                <div class="add-minus-icon">
+                    <i (click)="decreaseQuantity(item)" class="fa fa-minus-circle" aria-hidden="true"></i>
+                    <p class="quantity">{{item.quantity}}</p>
+                    <i (click)="increaseQuantity(item)" class="fa fa-plus-circle" aria-hidden="true"></i>
+                 </div>    
+             </div>
+        </div>
+        <div class="subtotal-details" *ngIf="totalPrice !== 0; else cartEmpty">
+            <div class="subtotal">
+                <p class="price">
+                    <span>Subtotal:</span>
+                    {{totalPrice | currency : 'INR'}}</p>
+            </div>  
+            <button class="btn">Buy now</button>
+        </div>
+        <ng-template #cartEmpty>
+            <h3 class="align-center">Your cart is empty</h3>
+        </ng-template>
+    </div>
+</div>

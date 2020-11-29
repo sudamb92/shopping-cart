@@ -1,0 +1,14 @@
+<nav>
+    <div class="full-width">
+        <div class="container">
+            <div class="heading-cart-icon">
+                <a routerLink="/" class="heading">YourChoice</a>
+                <div class="cart-item-wrapper" *ngIf="cartItemCount !== 0">
+                    <i (click)="routeToCartItem()" class="fa fa-shopping-cart" aria-hidden="true">
+                    </i>
+                    <span>{{cartItemCount}}</span>
+                </div>    
+            </div>
+        </div>
+    </div>
+</nav>

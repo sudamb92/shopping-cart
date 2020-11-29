@@ -1,0 +1,18 @@
+<div class="container products">
+    <h2 class="heading">Explore products</h2>
+    <div>
+        <input type="text" placeholder="Search product....." [(ngModel)]="searchProduct" class="form-control"/>
+    </div>
+    <div class="clear-both"></div>
+    <div class="product-list-wrapper">
+        <div class="product-list" *ngFor="let product of products | filterItem : searchProduct">
+            <img [src]="product.src" />
+            <div class="product-details">
+                <p class="name">{{product.name}}</p>
+                <p class="price">{{product.price | currency : 'INR'}}</p>
+            </div>
+            <div class="clear-both"></div>
+            <button class="btn" (click)="addToCart(product)" [disabled]="product.addedToCart">Add to cart</button>
+        </div>
+    </div>
+</div>
